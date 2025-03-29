@@ -1,10 +1,9 @@
-name: autodock-be
+name: malith
 
 on:
   push:
     branches:
-      - main
-      - dev-chamith
+      - master
 
 jobs:
   build:
@@ -16,7 +15,7 @@ jobs:
       - name: Build & Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: ${{ secrets.DOCKER_USERNAME }}/autodock-be
+          image: ${{ secrets.DOCKER_USERNAME }}/malith
           tags: latest
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
