@@ -1,0 +1,23 @@
+name: autodock-be
+
+on:
+  push:
+    branches:
+      - main
+      - dev-chamith
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build & Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: ${{ secrets.DOCKER_USERNAME }}/autodock-be
+          tags: latest
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESSCODE }}
